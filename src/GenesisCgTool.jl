@@ -1,4 +1,4 @@
-module GenesisCgToolBase
+module GenesisCgTool
 
     using Printf
     using Random

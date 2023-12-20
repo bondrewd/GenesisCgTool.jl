@@ -1,6 +1,6 @@
-using GenesisCgToolBase
+using GenesisCgTool
 using Test
 
-@testset "GenesisCgToolBase.jl" begin
+@testset "GenesisCgTool.jl" begin
     # Write your tests here.
 end
