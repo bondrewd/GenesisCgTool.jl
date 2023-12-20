@@ -17,19 +17,19 @@ struct PDBLine
 end
 
 function PDBLine(line::AbstractString)
-    atom_serial     = tryparse(Int, line[7:11])
-    atom_name       = strip(line[13:16])
-    residue_name    = strip(line[18:21])
-    chain_id        = line[22:22]
-    residue_serial  = tryparse(Int, line[23:26])
-    coor_x          = tryparse(Float64, line[31:38])
-    coor_y          = tryparse(Float64, line[39:46])
-    coor_z          = tryparse(Float64, line[47:54])
-    occupancy       = tryparse(Float64, line[55:60])
-    tempfactor      = tryparse(Float64, line[61:66])
-    segment_id      = strip(line[67:76])
-    element_name    = strip(line[77:78])
-    charge          = tryparse(Float64, line[79:80])
+    @views atom_serial    = tryparse(Int, line[7:11])
+    @views atom_name      = strip(line[13:16])
+    @views residue_name   = strip(line[18:21])
+    @views chain_id       = line[22:22]
+    @views residue_serial = tryparse(Int, line[23:26])
+    @views coor_x         = tryparse(Float64, line[31:38])
+    @views coor_y         = tryparse(Float64, line[39:46])
+    @views coor_z         = tryparse(Float64, line[47:54])
+    @views occupancy      = tryparse(Float64, line[55:60])
+    @views tempfactor     = tryparse(Float64, line[61:66])
+    @views segment_id     = strip(line[67:76])
+    @views element_name   = strip(line[77:78])
+    @views charge         = tryparse(Float64, line[79:80])
 
     isnothing(residue_serial) && throw(ArgumentError("Failed parsing 'residue serial' of PDB ATOM record: $line"))
     isnothing(coor_x)         && throw(ArgumentError("Failed parsing 'x' of PDB ATOM record: $line"))
@@ -54,7 +54,7 @@ function PDBLine(line::AbstractString)
 end
 
 function Base.show(io::IO, pdbline::PDBLine)
-    Printf.@printf(
+    @printf(
         io,
         "ATOM  %5d %4s %4s%1s%4d    %8.3f%8.3f%8.3f%6.2f%6.2f%10s%2s%2d \n",
         pdbline.atom_serial,
