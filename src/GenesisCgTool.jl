@@ -1,6 +1,5 @@
 module GenesisCgTool
 
-    using Printf
     using Random
     using Reexport
     using Statistics
@@ -10,6 +9,5 @@ module GenesisCgTool
     @reexport using StaticArrays
 
     include("utils.jl")
-    include("parsers.jl")
 
 end
